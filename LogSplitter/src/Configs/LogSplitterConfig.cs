@@ -13,7 +13,7 @@ namespace LogSplitter.Configs
                 { GlobalConstants.ConsoleGroup, "Console" }
         };
 
-        public List<int> mutedChats = new List<int>{};
+        public List<int> mutedChats = new List<int>{ GlobalConstants.ServerInfoChatGroup, GlobalConstants.DamageLogChatGroup, GlobalConstants.InfoLogChatGroup, GlobalConstants.ConsoleGroup};
 
         public string chatDirectory = GamePaths.Logs;
 
