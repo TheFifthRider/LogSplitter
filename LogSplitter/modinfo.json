@@ -5,7 +5,7 @@
     "authors": [
         "TheFifthRider"
     ],
-    "description": "To be added",
+    "description": "Splits chat logs into markdown files at a targetted location based on the chat they show up in game. Useful for keeping track of RP moments!",
     "version": "1.0.0",
     "dependencies": {
         "game": ""
