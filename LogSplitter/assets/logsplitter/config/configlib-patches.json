@@ -1,0 +1,35 @@
+{
+    "version": 0,
+    "file": "LogSplitter.json",
+    "patches": {},
+    "settings": [
+        {
+            "type": "separator",
+            "title": "logSplitterSettings"
+        },
+        {
+            "code": "serverChats",
+            "comment": "serverChatsComment",
+            "type": "other",
+            "default": {
+                "0": "GeneralChat",
+                "-1": "ServerInfo",
+                "-5": "DamageLog",
+                "-6": "InfoLog",
+                "-4": "Console"
+            }
+        },
+        {
+            "code": "mutedChats",
+            "comment": "mutedChatsComment",
+            "type": "other",
+            "default": [-1, -5, -6, -4]
+        },
+        {
+            "code": "chatDirectory",
+            "comment": "chatDirectoryComment",
+            "type": "string",
+            "default": ""
+        }
+    ]
+}

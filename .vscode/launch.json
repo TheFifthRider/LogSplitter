@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "name": "C#: CakeBuild",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\ZZCakeBuild\\CakeBuild.csproj",
+            "launchConfigurationId": "TargetFramework=;CakeBuild"
+        }
+    ]
+}

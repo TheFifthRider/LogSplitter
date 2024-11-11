@@ -1,0 +1,9 @@
+{
+    "serverChats": "Server Chat Mapping",
+    "serverChatsComment": "A mapping of chat id to markdown file. Look for @ <number> in your client_chat.txt to find the chat's id.",
+    "mutedChats": "Muted Chats",
+    "mutedChatsComment": "Chat ids for chats you don't want markdown generated for",
+    "chatDirectory": "Chat Directory",
+    "chatDirectoryComment": "The absolute path to where you'd like markdown generated",
+    "logSplitterSettings": "LogSplitter Settings"
+}
