@@ -6,7 +6,11 @@
         "TheFifthRider"
     ],
     "description": "Splits client-chat.txt logs into named markdown files. Useful for keeping track of RP moments!",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "website": "https://github.com/TheFifthRider/LogSplitter",
+    "side": "Client",
+    "requiredOnClient": false,
+    "requiredOnServer": false,
     "dependencies": {
         "game": ""
     }
