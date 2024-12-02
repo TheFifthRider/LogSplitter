@@ -16,7 +16,7 @@ public class LogSplitterModSystem : ModSystem
 
     public void EntryAddedHandler(EnumLogType logType, string message, params object[] args)
     {
-        if (logType == EnumLogType.Chat) {
+        if (EnumLogType.Chat == logType) {
             int chatId = int.Parse(args[1].ToString());
             if (!config.mutedChats.Contains(chatId)) {
                 string chatName = config.serverChats.Get(chatId) ?? $"""UnnamedChat({chatId})""";
