@@ -12,6 +12,7 @@ The markdown files are saved with format YYYY-MM-DD-hhmm_<chat name>.md
 
 The default LogSplitter config looks something like this:
 
+```
 {
   "serverChats": {
     "0": "GeneralChat",
@@ -28,6 +29,8 @@ The default LogSplitter config looks something like this:
   ],
   "chatDirectory": "C:\\Users\\<username>\\AppData\\Roaming\\VintagestoryData\\Logs"
 }
+```
+
 ### serverChats
 
 A dictionary that maps chat ids to the name you'd like present in the markdown file. Recommended that you avoid spaces and special characters depending on what your OS likes, after all this is going to be in the file name of the created markdown file!
