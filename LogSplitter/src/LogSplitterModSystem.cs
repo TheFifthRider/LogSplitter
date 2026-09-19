@@ -11,6 +11,7 @@ namespace LogSplitter;
 
 public class LogSplitterModSystem : ModSystem
 {
+    private static readonly Regex defaultFilter = new(@"<[^>]*>", RegexOptions.Compiled);
     private static string configName = "LogSplitter.json";
     private static LogSplitterConfig config;
     private DateTime loggingStarted;
@@ -45,7 +46,17 @@ public class LogSplitterModSystem : ModSystem
         var formattedMessage = message; 
         if (config.filterChatMessage)
         {
-            var filter = new Regex(config.filterRegex, RegexOptions.None);
+            var filter = defaultFilter;
+            try
+            {
+                filter = new Regex(@config.filterRegex, RegexOptions.None);
+            }
+            catch (ArgumentException ex)
+            {
+                log.Debug("Invalid filter regex");
+                log.Debug(ex.Message);
+            }
+
             formattedMessage = filter.Replace(formattedMessage, "");
         }
         
