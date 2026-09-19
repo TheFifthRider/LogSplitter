@@ -3,6 +3,7 @@ using Vintagestory.API.Common;
 using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using LogSplitter.Configs;
 using Vintagestory.API.Util;
 
@@ -23,19 +24,37 @@ public class LogSplitterModSystem : ModSystem
                     log.Debug("logType was of Chat, but args passed in do not look correct. Skipping message.");
                     log.Debug($"Skipped message: (logType={logType}, message={message}, args={args})");
                 } else {
-                    string chatMessage = args[0].ToString();
-                    int chatId = int.Parse(args[1].ToString());
+                    var chatMessage = args[0].ToString();
+                    var chatId = int.Parse(args[1].ToString());
                     
                     if (!config.mutedChats.Contains(chatId)) {
-                        string chatName = config.serverChats.Get(chatId) ?? $"""UnnamedChat({chatId})""";
-                        string channelLogPath = Path.Combine(config.chatDirectory,  $"""{loggingStarted:yyyy-mm-dd-HHMM}_{chatName}.md""");
-                        File.AppendAllLines(channelLogPath, new List<string> { $"""{DateTime.Now:yyyy.mm.dd HH:MM:ss} {chatMessage}""" });
+                        var chatName = config.serverChats.Get(chatId) ?? $"""UnnamedChat({chatId})""";
+                        var channelLogPath = Path.Combine(config.chatDirectory,  $"""{loggingStarted:yyyy-mm-dd-HHMM}_{chatName}.md""");
+                        var lineToAppend = formatChatMessage(config, chatMessage);
+                        File.AppendAllLines(channelLogPath, new List<string> { lineToAppend });
                     }
                 }
             }
         } catch(Exception e) {
             log?.Error(e);
         }
+    }
+
+    private string formatChatMessage(LogSplitterConfig config, string message)
+    {
+        var formattedMessage = message; 
+        if (config.filterChatMessage)
+        {
+            var filter = new Regex(config.filterRegex, RegexOptions.None);
+            formattedMessage = filter.Replace(formattedMessage, "");
+        }
+        
+        if (config.addTimestamp)
+        {
+            formattedMessage = $"""{DateTime.Now:yyyy.mm.dd HH:MM:ss} {formattedMessage}""";
+        }
+        
+        return formattedMessage;
     }
 
     public override void StartClientSide(ICoreClientAPI api)

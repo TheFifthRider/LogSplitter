@@ -17,5 +17,11 @@ namespace LogSplitter.Configs
 
         public string chatDirectory = GamePaths.Logs;
 
+        public bool addTimestamp = true;
+
+        public bool filterChatMessage = true;
+
+        public string filterRegex = "<[^>]*>";
+
     }
 }
